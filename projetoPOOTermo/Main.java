@@ -8,11 +8,7 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-        consultarAPI();
-
-        //Colocar lista como parâmetro do metodo JogoAdivinhacao
-        //JogoAdivinhacao jogo = new JogoAdivinhacao();
-        //jogo.iniciarJogo();
+        consultarAPI();  
     }
 
     public static void consultarAPI() {
@@ -22,6 +18,8 @@ public class Main {
             String response = obterConteudoDaURL(apiUrl);
 
             List<String> palavrasComCincoLetras = filtrarPalavrasComCincoLetras(response);
+            JogoAdivinhacao jogo = new JogoAdivinhacao(palavrasComCincoLetras);
+            jogo.iniciarJogo();
 
             System.out.println("Palavras com 5 letras: " + palavrasComCincoLetras);
         } catch (IOException e) {
